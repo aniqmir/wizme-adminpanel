@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -9,6 +9,10 @@ export default function AddAvatars() {
   const [url, setUrl] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [itemName, setItemname] = React.useState("");
+
+  useEffect(() => {
+    document.title = "Add Avatars";
+  }, []);
 
   function changeImage(e) {
     let formData = new FormData();
@@ -38,7 +42,9 @@ export default function AddAvatars() {
       .then(res => {
         if (res) {
           console.log(res);
-
+          setUrl("");
+          setPrice("");
+          setItemname("");
           //   props.history.push("/dashboard");
         }
       })

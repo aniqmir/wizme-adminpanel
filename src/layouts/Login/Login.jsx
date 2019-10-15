@@ -111,47 +111,12 @@ export default function Login(props) {
     setOpen(false);
   }
 
-  //   function loggedInfunc(e) {
-  //     e.preventDefault();
-  //     if (values.email.length === 0 || values.email === undefined) {
-  //       setNotification("Enter valid Email");
-  //       setOpen(true);
-  //     } else if (values.password.length === 0 || values.password === undefined) {
-  //       setNotification("Enter Password");
-  //       setOpen(true);
-  //     } else {
-  //       axios
-  //         .post(`https://wizmeadmin-api.herokuapp.com/api/auth`, {
-  //           email: values.email,
-  //           password: values.password
-  //         })
-  //         .then(res => {
-  //           // console.log(res.data.success);
-  //           if (
-  //             res.data.success === true &&
-  //             res.data["data"]["data"]["type"] === "WizMeAdmin"
-  //           ) {
-  //             localStorage.setItem("type", "WizMeAdmin");
-  //             localStorage.setItem("loggedIn", true);
-  //             localStorage.setItem("token", res.data["data"]["data"]["token"]);
-  //             props.history.push("/dashboard");
-  //             window.location.reload();
-  //           }
-  //         })
-  //         .catch(error => {
-  //           console.log(error.createError);
-  //           setNotification("Error while logging in");
-  //           setOpen(true);
-  //         });
-  //     }
-  //   }
-
   function loggedInfunc() {
     if (values.email === "abc" && values.password === "123") {
       localStorage.setItem("type", "WizMeAdmin");
       localStorage.setItem("loggedIn", true);
       localStorage.setItem("token", "tokenavailable");
-      props.history.push("/dashboard");
+      props.history.push("/addavatars");
     } else {
       setNotification("Error while logging in");
       setOpen(true);
@@ -283,6 +248,6 @@ export default function Login(props) {
       </form>
     );
   } else {
-    return <Redirect to="/" />;
+    return <Redirect to="/addavatars" />;
   }
 }

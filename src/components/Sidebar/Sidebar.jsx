@@ -103,7 +103,7 @@ const useStyles = makeStyles(theme => ({
     color: "white"
   },
   listitemicon: {
-    color: "white"
+    color: "black !important"
   }
 }));
 
@@ -167,7 +167,11 @@ export default function MiniDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            {props.path.charAt(0).toUpperCase() + props.path.slice(1)}
+            {props.path.charAt(0).toUpperCase() +
+              props.path.slice(1, 3) +
+              ` ` +
+              props.path.charAt(3).toUpperCase() +
+              props.path.slice(4)}
           </Typography>
           <div className={classes.logout} />
           <Button onClick={() => logout()}>Logout</Button>
@@ -207,38 +211,6 @@ export default function MiniDrawer(props) {
         <List>
           {props.listitemnames.map(
             (text, index) => {
-              // if (text === "request" && props.pending > 0) {
-              //   return (
-              //     <ListItem
-              //       alignItems="center"
-              //       button
-              //       key={text}
-              //       selected={selectedIndex === index}
-              //       onClick={event => handleListItemClick(event, index, text)}
-              //       classes={{
-              //         selected: classes.selected
-              //       }}
-              //     >
-              //       <ListItemIcon
-              //         classes={{
-              //           root: classes.listitemicon
-              //         }}
-              //       >
-              //         {props.icon[index]}
-              //       </ListItemIcon>
-              //       <ListItemText
-              //         primary={text.charAt(0).toUpperCase() + text.slice(1)}
-              //       />
-              //       <Badge
-              //         color="secondary"
-              //         variant="dot"
-              //         style={{ width: "100%" }}
-              //       >
-              //         <div />
-              //       </Badge>
-              //     </ListItem>
-              //   );
-              // } else {
               return (
                 <ListItem
                   alignItems="center"
@@ -250,15 +222,14 @@ export default function MiniDrawer(props) {
                     selected: classes.selected
                   }}
                 >
-                  {/* <ListItemIcon
-                    classes={{
-                      root: classes.listitemicon
-                    }}
-                  >
-                    {props.icon[index]}
-                  </ListItemIcon> */}
                   <ListItemText
-                    primary={text.charAt(0).toUpperCase() + text.slice(1)}
+                    primary={
+                      text.charAt(0).toUpperCase() +
+                      text.slice(1, 3) +
+                      `-` +
+                      text.charAt(3).toUpperCase() +
+                      text.slice(4)
+                    }
                   />
                 </ListItem>
               );

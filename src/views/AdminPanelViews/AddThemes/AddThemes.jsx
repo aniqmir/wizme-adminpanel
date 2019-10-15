@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -9,6 +9,13 @@ export default function Addthemes() {
   const [url, setUrl] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [itemName, setItemname] = React.useState("");
+  const [color, setColor] = React.useState("");
+  const [fontSize, setFontSize] = React.useState("");
+  const [fontFamily, setFontFamily] = React.useState("");
+
+  useEffect(() => {
+    document.title = "Add Themes";
+  }, []);
 
   function changeImage(e) {
     let formData = new FormData();
@@ -33,12 +40,22 @@ export default function Addthemes() {
         itemUrl: url,
         itemName: itemName,
         itemPrice: price,
-        itemType: "theme"
+        itemType: "theme",
+        themeProperties: {
+          color: color,
+          fontSize: fontSize,
+          fontFamily: fontFamily
+        }
       })
       .then(res => {
         if (res) {
           console.log(res);
-
+          setUrl("");
+          setPrice("");
+          setItemname("");
+          setColor("");
+          setFontSize("");
+          setFontFamily("");
           //   props.history.push("/dashboard");
         }
       })
@@ -101,6 +118,39 @@ export default function Addthemes() {
           margin="normal"
           variant="outlined"
           onChange={e => setItemname(e.target.value)}
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <TextField
+          id="outlined-color"
+          label="Color"
+          value={color}
+          margin="normal"
+          variant="outlined"
+          onChange={e => setColor(e.target.value)}
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <TextField
+          id="outlined-fontsize"
+          label="Font Size"
+          value={fontSize}
+          margin="normal"
+          variant="outlined"
+          onChange={e => setFontSize(e.target.value)}
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <TextField
+          id="outlined-fontfamily"
+          label="Font-Family"
+          value={fontFamily}
+          margin="normal"
+          variant="outlined"
+          onChange={e => setFontFamily(e.target.value)}
           fullWidth
         />
       </Grid>
