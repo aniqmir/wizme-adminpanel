@@ -19,6 +19,7 @@ function CustomRoutes() {
           <Route exact path="/addthemes" component={AdminPanel} />
           <Route exact path="/addavatars" component={AdminPanel} />
           <Route exact path="/addheaders" component={AdminPanel} />
+          <Route exact path="/allitems" component={AdminPanel} />
         </div>
       );
     } else {

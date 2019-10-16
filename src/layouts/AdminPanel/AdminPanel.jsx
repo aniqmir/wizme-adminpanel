@@ -4,11 +4,11 @@ import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 import AddAvatars from "../../views/AdminPanelViews/AddAvatars/AddAvatars.jsx";
 import AddHeaders from "../../views/AdminPanelViews/AddHeaders/AddHeaders.jsx";
 import AddThemes from "../../views/AdminPanelViews/AddThemes/AddThemes.jsx";
-
+import AllItems from "../../views/AdminPanelViews/AllItems/AllItems.jsx";
 import axios from "axios";
 
 export default function AdminPanel(props) {
-  const listitemnames = ["addavatars", "addheaders", "addthemes"];
+  const listitemnames = ["addavatars", "addheaders", "addthemes", "allitems"];
 
   const loggedIn = localStorage.getItem("loggedIn"); //this state stays in Redux
   const token = localStorage.getItem("token");
@@ -28,7 +28,8 @@ export default function AdminPanel(props) {
     dashboard: <AddAvatars token={token} />,
     addavatars: <AddAvatars token={token} />,
     addheaders: <AddHeaders token={token} />,
-    addthemes: <AddThemes token={token} />
+    addthemes: <AddThemes token={token} />,
+    allitems: <AllItems token={token} />
   };
 
   if (!loggedIn || token.length === 0) {
